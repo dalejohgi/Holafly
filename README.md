@@ -64,3 +64,6 @@ El presente código despliega un servidor node.js/express sobre el que se busca 
 > - action: Endpoint al que se accede
 > - header: Headers de la llamada almacenados como una cadena de texto plana
 > - ip: Dirección IP desde donde se realiza la llamada
+
+
+## Librerias Usadas
