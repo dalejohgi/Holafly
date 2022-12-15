@@ -1,8 +1,11 @@
-const applySwapiEndpoints = require('../server/endpoints/swapiEndpoints');
+const applyPeopleEndpoints = require('./people.routes');
+const applyPlanetsEndpoints = require('./planets.routes');
 
-const applyEndpoints = (server, app) => {
-	applySwapiEndpoints(server, app);
-	return server;
+const applyRoutes = (server, app) => {
+  applyPeopleEndpoints(server, app);
+  applyPlanetsEndpoints(server, app);
+
+  return server;
 };
 
-module.exports = applyEndpoints;
+module.exports = applyRoutes;

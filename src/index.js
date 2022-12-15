@@ -1,5 +1,5 @@
 const createServer = require('./server');
-const db = require('./db');
+const db = require('./data');
 const services = require('./services');
 
 const app = {
