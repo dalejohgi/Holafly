@@ -1,11 +1,11 @@
 const express = require('express');
-const applyEndpoints = require('./endpoints');
+const applyRoutes = require('./routes');
 const applyMiddlewares = require('./middlewares');
 
 const createExpressServer = async app => {
 	const server = express();
 	applyMiddlewares(server, app);
-	applyEndpoints(server, app);
+	applyRoutes(server, app);
     
     await app.db.initDB();
 

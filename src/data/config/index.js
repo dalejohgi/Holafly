@@ -1,7 +1,7 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const models = require('./models');
+const models = require('../../models');
 
 let sequelize;
 

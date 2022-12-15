@@ -1,4 +1,4 @@
-const applySwapiEndpoints = require('./swapiEndpoints');
+const applySwapiEndpoints = require('../server/endpoints/swapiEndpoints');
 
 const applyEndpoints = (server, app) => {
 	applySwapiEndpoints(server, app);
