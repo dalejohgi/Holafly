@@ -1,5 +1,5 @@
-const applyPeopleEndpoints = require('./people.routes');
-const applyPlanetsEndpoints = require('./planets.routes');
+const applyPeopleEndpoints = require('./people.endpoints');
+const applyPlanetsEndpoints = require('./planets.endpoints');
 
 const applyRoutes = (server, app) => {
   applyPeopleEndpoints(server, app);

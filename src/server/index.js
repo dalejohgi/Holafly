@@ -1,5 +1,5 @@
 const express = require('express');
-const applyRoutes = require('./routes');
+const applyRoutes = require('./swEndpoints');
 const applyMiddlewares = require('./middlewares');
 
 const createExpressServer = async app => {
