@@ -2,6 +2,33 @@ const generalServices = require('./generalServices');
 const { AVAILABLE_PLANETS } = require('../utils/constants');
 const { SWAPI_URL } = process.env;
 
+const findPlanetById = async (id, app) => {
+  const {
+    repositories: { planetsRepository },
+    db: { swPlanet },
+  } = app;
+
+  let response;
+  let planetFound = await planetsRepository.findById(id, swPlanet);
+  if (planetFound) {
+    response = {
+      name: planetFound.name,
+      gravity: planetFound.gravity,
+    };
+    return response;
+  } else {
+    planetFound = await retrievePlanetFromSWAPI({ id });
+
+    if (planetFound) {
+      response = {
+        name: planetFound.name,
+        gravity: planetFound.gravity,
+      };
+    }
+    return response;
+  }
+};
+
 const getWeightOnPlanet = (mass, gravity) => {
   return mass * gravity;
 };
@@ -36,6 +63,7 @@ const validateHomePlanet = async (personWorld, planetName) => {
 };
 
 module.exports = {
+  findPlanetById,
   getWeightOnPlanet,
   retrievePlanetFromSWAPI,
   getRandomPlanet,
