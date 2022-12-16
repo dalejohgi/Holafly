@@ -1,4 +1,5 @@
-const getWeightOnPlanet = require('./getWeightOnPlanet');
-const makeRequests = require('./makeRequests');
+const generalServices = require('./getWeightOnPlanet');
+const planetServices = require('./makeRequests');
+const peopleServices = require('./peopleServices');
 
-module.exports = {getWeightOnPlanet, makeRequests};
+module.exports = {generalServices, planetServices,peopleServices};
