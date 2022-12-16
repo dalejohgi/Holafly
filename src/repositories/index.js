@@ -5,5 +5,5 @@ const logsRepository = require('./logs.repository');
 module.exports = {
   peopleRepository,
   planetsRepository,
-  logsRepository
+  logsRepository,
 };
