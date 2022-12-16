@@ -1,15 +1,15 @@
 const createServer = require('./server');
-const db = require('./data');
-const services = require('./services');
+const { db } = require('./data');
+const repositories = require('./repositories');
 
 const app = {
   db,
-  services,
+  repositories,
 };
 
 async function start() {
   const server = await createServer(app);
-	
+
   // Start the GraphQL server
   const port = process.env.PORT || 4567;
   server.listen(port, () => {
