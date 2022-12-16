@@ -1,6 +1,7 @@
 const express = require('express');
 const applyRoutes = require('./swEndpoints');
 const applyMiddlewares = require('./middlewares');
+const { logsServices } = require('../services');
 
 const createExpressServer = async app => {
   const server = express();
@@ -29,8 +30,8 @@ const createExpressServer = async app => {
     res.send(data);
   });
 
-  server.get('/hfswapi/getLogs', async (req, res) => {
-    const data = await app.db.logging.findAll();
+  server.get('/hfswapi/logs', async (req, res) => {
+    const data = await logsServices.getAll(app);
     res.send(data);
   });
 
