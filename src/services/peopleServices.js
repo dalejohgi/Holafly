@@ -46,7 +46,12 @@ const retrievePersonFromSWAPI = async id => {
   });
 };
 
+const getWeightOnPlanet = (mass, gravity) => {
+  return mass * gravity;
+};
+
 module.exports = {
   findPersonById,
   retrievePersonFromSWAPI,
+  getWeightOnPlanet,
 };
