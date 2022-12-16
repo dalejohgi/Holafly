@@ -18,22 +18,34 @@ const applyPeopleEndpoints = (server, app) => {
       return res.status(409).send({
         status: 'ERROR',
         message: `Trying to calculate the weight for ${randomPerson.name} on ${randomPlanet.name} but it seems this is it's homeworld.`,
-        person: randomPerson.name,
-        personMass: randomPerson.mass,
-        personHomeworld: randomPerson.homeworld,
-        planet: randomPlanet.name,
-        planetGravity: randomPlanet.gravity,
+        person: {
+          name: randomPerson.name,
+          mass: randomPerson.mass,
+          homeworld: randomPerson.homeworld,
+        },
+        planet: {
+          name: randomPlanet.name,
+          gravity: randomPlanet.gravity,
+          url: randomPlanet.url,
+        },
       });
     }
+
     const gravity = randomPlanet.gravity.split(' ');
     if (isNaN(gravity[0])) {
       return res.status(409).send({
         status: 'ERROR',
         message: `The random planet has an unkown gravity.`,
-        person: randomPerson.name,
-        personMass: randomPerson.mass,
-        personHomeworld: randomPerson.homeworld,
-        planet: randomPlanet.url,
+        person: {
+          name: randomPerson.name,
+          mass: randomPerson.mass,
+          homeworld: randomPerson.homeworld,
+        },
+        planet: {
+          name: randomPlanet.name,
+          gravity: randomPlanet.gravity,
+          url: randomPlanet.url,
+        },
       });
     }
     const weight = planetServices.getWeightOnPlanet(
@@ -42,13 +54,20 @@ const applyPeopleEndpoints = (server, app) => {
     );
     return res.status(200).send({
       status: 'OK',
-      message: `The weight for ${randomPerson.name} on ${randomPlanet.name} is ${weight}.`,
-      person: randomPerson.name,
-      personMass: randomPerson.mass,
-      personHomeworld: randomPerson.homeworld,
-      planet: randomPlanet.name,
-      planetGravity: gravity[0],
-      WeightOnPlanet: weight,
+      message: `The weight for ${randomPerson.name} on ${
+        randomPlanet.name
+      } is ${weight.toFixed(2)}.`,
+      person: {
+        name: randomPerson.name,
+        mass: randomPerson.mass,
+        homeworld: randomPerson.homeworld,
+      },
+      planet: {
+        name: randomPlanet.name,
+        gravity: randomPlanet.gravity,
+        url: randomPlanet.url,
+      },
+      WeightOnPlanet: weight.toFixed(2),
     });
   });
 

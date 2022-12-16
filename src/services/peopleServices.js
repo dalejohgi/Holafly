@@ -1,6 +1,7 @@
 const generalServices = require('./generalServices');
 const { SWAPI_URL } = process.env;
 const { AVAILABLE_PEOPLE } = require('../utils/constants');
+
 const findPersonById = async (id, app) => {
   const {
     repositories: { peopleRepository },
