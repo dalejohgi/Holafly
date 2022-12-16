@@ -67,3 +67,13 @@ El presente código despliega un servidor node.js/express sobre el que se busca 
 
 
 ## Librerias Usadas
+
+> jest@29.3.1 para correr los test, y prettier@2.8.1 para dar formato al codigo
+
+## .env
+> Se removió en archivo .env del repo y se agrego al .gitignore como buena practica de seguridad, sin embaargo para efectos practicos de la ejectucion y test de estaa prueba se compartte en este apartado: 
+```
+NODE_ENV='develop'
+PORT = 4567
+SWAPI_URL='https://swapi.dev/api'
+```
