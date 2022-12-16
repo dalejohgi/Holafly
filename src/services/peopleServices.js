@@ -1,7 +1,6 @@
 const generalServices = require('./generalServices');
-const planetServices = require('./planetServices');
 const { SWAPI_URL } = process.env;
-
+const { AVAILABLE_PEOPLE } = require('../utils/constants');
 const findPersonById = async (id, app) => {
   const {
     repositories: { peopleRepository },
@@ -46,12 +45,24 @@ const retrievePersonFromSWAPI = async id => {
   });
 };
 
-const getWeightOnPlanet = (mass, gravity) => {
-  return mass * gravity;
+const getRandomPerson = async app => {
+  const {
+    repositories: { peopleRepository },
+    db: { swPeople },
+  } = app;
+
+  const randomId = generalServices.generateRandomDBIndex(AVAILABLE_PEOPLE);
+  let personFound = await peopleRepository.findById(randomId, swPeople);
+
+  if (!personFound) {
+    personFound = await retrievePersonFromSWAPI(randomId);
+  }
+
+  return personFound;
 };
 
 module.exports = {
   findPersonById,
   retrievePersonFromSWAPI,
-  getWeightOnPlanet,
+  getRandomPerson,
 };

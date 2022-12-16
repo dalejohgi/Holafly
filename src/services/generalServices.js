@@ -20,11 +20,11 @@ const handleGenericRequest = async ({
   return data;
 };
 
-const getRandomDBIndex = itemsLength => {
+const generateRandomDBIndex = itemsLength => {
   return Math.floor(Math.random() * itemsLength);
 };
 
 module.exports = {
   handleGenericRequest,
-  getRandomDBIndex,
+  generateRandomDBIndex,
 };
