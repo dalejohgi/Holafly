@@ -1,7 +1,7 @@
 const express = require('express');
 const applyRoutes = require('./swEndpoints');
 const applyMiddlewares = require('./middlewares');
-const { logsServices } = require('../services');
+const { logsServices, generalServices } = require('../services');
 
 const createExpressServer = async app => {
   const server = express();
@@ -21,11 +21,11 @@ const createExpressServer = async app => {
   });
 
   server.get('/hfswapi/test', async (req, res) => {
-    const data = await app.swapiFunctions.genericRequest(
-      'https://swapi.dev/api/',
-      'GET',
-      null,
-      true,
+    const data = await generalServices.handleGenericRequest({
+      url: 'https://swapi.dev/api/',
+      method: 'GET',
+      logging: true
+    }
     );
     res.send(data);
   });
