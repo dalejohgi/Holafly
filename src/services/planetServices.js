@@ -58,7 +58,6 @@ const getRandomPlanet = async app => {
 // Validates if the randomPerson's homeland is the same random planet
 const validateHomePlanet = async (personWorld, planetName) => {
   const planetFound = await retrievePlanetFromSWAPI({ url: personWorld });
-  console.log(planetFound.name, planetName);
   return planetFound.name === planetName;
 };
 
