@@ -55,7 +55,7 @@ const applyPeopleEndpoints = (server, app) => {
       status: 'OK',
       message: `The weight for ${randomPerson.name} on ${
         randomPlanet.name
-      } is ${weight.toFixed(2)}.`,
+      } is ${weight.toFixed(2)} kg.`,
       person: {
         name: randomPerson.name,
         mass: randomPerson.mass,
