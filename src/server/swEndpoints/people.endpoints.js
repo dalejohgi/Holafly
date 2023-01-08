@@ -1,6 +1,5 @@
 const {
   peopleServices,
-  generalServices,
   planetServices,
 } = require('../../services');
 
@@ -32,10 +31,10 @@ const applyPeopleEndpoints = (server, app) => {
     }
 
     const gravity = randomPlanet.gravity.split(' ');
-    if (isNaN(gravity[0])) {
+    if (isNaN(gravity[0]) || isNaN(randomPerson.mass)) {
       return res.status(409).send({
         status: 'ERROR',
-        message: `The random planet has an unkown gravity.`,
+        message: `Unkown values - Plannet's gravity and person's mass must be valid numbers`,
         person: {
           name: randomPerson.name,
           mass: randomPerson.mass,
