@@ -1,8 +1,9 @@
 const getAll = async app => {
   const {
     repositories: { logsRepository },
+    db
   } = app;
-  const foundLogs = await logsRepository.getAll(app.db);
+  const foundLogs = await logsRepository.getAll(db);
 
   const mappedResponse = [];
   for (const log of foundLogs) {
