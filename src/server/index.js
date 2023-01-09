@@ -24,9 +24,8 @@ const createExpressServer = async app => {
     const data = await generalServices.handleGenericRequest({
       url: 'https://swapi.dev/api/',
       method: 'GET',
-      logging: true
-    }
-    );
+      logging: true,
+    });
     res.send(data);
   });
 
