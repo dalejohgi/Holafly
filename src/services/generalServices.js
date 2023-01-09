@@ -17,7 +17,7 @@ const handleGenericRequest = async ({
   if (logging) {
     console.log(data);
   }
-  return data;
+  return {...data, code: response.status};
 };
 
 const generateRandomDBIndex = itemsLength => {

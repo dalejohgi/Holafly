@@ -40,10 +40,15 @@ const findPersonById = async (id, app) => {
 };
 
 const retrievePersonFromSWAPI = async id => {
-  return await generalServices.handleGenericRequest({
-    url: `${SWAPI_URL}/people/${id}`,
-    method: 'GET',
-  });
+  try {
+    const response = await generalServices.handleGenericRequest({
+      url: `${SWAPI_URL}/people/${id}`,
+      method: 'GET',
+    });
+    return response.code === 404 ? null : response;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getRandomPerson = async app => {

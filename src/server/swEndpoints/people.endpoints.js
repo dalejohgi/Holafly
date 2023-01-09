@@ -72,12 +72,12 @@ const applyPeopleEndpoints = (server, app) => {
   server.get('/hfswapi/people/:id', async (req, res) => {
     try {
       const { id } = req.params;
-
       const personFound = await peopleServices.findPersonById(id, app);
 
       if (!personFound) {
-        res.status(404).send('Person does not exist');
+        res.status(404).send('This person does not exist');
       }
+
       return res.send(personFound);
     } catch (error) {
       res.status(500).send({
