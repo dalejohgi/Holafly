@@ -34,10 +34,11 @@ const getWeightOnPlanet = (mass, gravity) => {
 };
 
 const retrievePlanetFromSWAPI = async ({ id, url = '' }) => {
-  return await generalServices.handleGenericRequest({
+  const response = await generalServices.handleGenericRequest({
     url: url || `${SWAPI_URL}/planets/${id}`,
     method: 'GET',
   });
+  return response.code === 404 ? null : response;
 };
 
 const getRandomPlanet = async app => {
