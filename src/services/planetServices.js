@@ -34,10 +34,11 @@ const getWeightOnPlanet = (mass, gravity) => {
 };
 
 const retrievePlanetFromSWAPI = async ({ id, url = '' }) => {
-  return await generalServices.handleGenericRequest({
+  const response = await generalServices.handleGenericRequest({
     url: url || `${SWAPI_URL}/planets/${id}`,
     method: 'GET',
   });
+  return response.code === 404 ? null : response;
 };
 
 const getRandomPlanet = async app => {
@@ -58,7 +59,6 @@ const getRandomPlanet = async app => {
 // Validates if the randomPerson's homeland is the same random planet
 const validateHomePlanet = async (personWorld, planetName) => {
   const planetFound = await retrievePlanetFromSWAPI({ url: personWorld });
-  console.log(planetFound.name, planetName);
   return planetFound.name === planetName;
 };
 
